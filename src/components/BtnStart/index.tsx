@@ -6,11 +6,12 @@ interface props {
   txt: string;
   setValue: Dispatch<SetStateAction<any>>;
   value: any;
+  prevent?: boolean;
 }
-export default function BtnStart({ txt, setValue, value }: props) {
+export default function BtnStart({ txt, setValue, value, prevent }: props) {
   const [count, setCount] = useState(0);
   const preventSleep = () => {
-    if (count > 0) {
+    if (count > 0 || !prevent) {
       return;
     }
     preventPageSleep();
