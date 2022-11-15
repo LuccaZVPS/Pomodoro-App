@@ -45,6 +45,28 @@ function App() {
     }
     setFinishDate(Date.now() + time * 1000);
   }, [pause]);
+  useMemo(() => {
+    if (time !== 0) {
+      return;
+    }
+    alarmSound();
+    if (totalTime !== 25 * 60) {
+      setTotalTime(25 * 60);
+    } else {
+      setCount(count + 1);
+    }
+  }, [time]);
+  useMemo(() => {
+    if (count === 0) {
+      return;
+    }
+    if (count === 4) {
+      setTotalTime(10 * 60);
+      setCount(0);
+      return;
+    }
+    setTotalTime(5 * 60);
+  }, [count]);
   return (
     <styled.container>
       <Options setTotalTime={setTotalTime} totalTime={totalTime} />
