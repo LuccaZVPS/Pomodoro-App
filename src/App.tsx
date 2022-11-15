@@ -25,6 +25,7 @@ function App() {
     }
     setDate(Date.now());
     setFinishDate(Date.now() + totalTime * 1000);
+    // eslint-disable-next-line
   }, [started]);
 
   useEffect(() => {
@@ -38,12 +39,14 @@ function App() {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line
   }, [finishDate, time, date, pause]);
   useMemo(() => {
     if (pause || totalTime === time) {
       return;
     }
     setFinishDate(Date.now() + time * 1000);
+    // eslint-disable-next-line
   }, [pause]);
   useMemo(() => {
     if (time !== 0) {
@@ -55,6 +58,7 @@ function App() {
     } else {
       setCount(count + 1);
     }
+    // eslint-disable-next-line
   }, [time]);
   useMemo(() => {
     if (count === 0) {
