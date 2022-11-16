@@ -13,7 +13,7 @@ function App() {
   const [pause, setPause] = useState(false);
   const [started, setStarted] = useState(false);
 
-  useMemo(() => {
+  useEffect(() => {
     setTime(totalTime);
     setStarted(false);
     setPause(false);
